@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>基本运动</title>
+		<style>
+			div{
+				width:50px;
+				height:50px;
+				position: fixed;
+				left:10px;
+				top:10px;
+				background: red;
+			}
+		</style>
+    </head>
+    <body>
+		<div id="demo"></div>
+        <script>
+            var timer=null;
+			var target=300;
+			var dom=document.getElementById('demo');
+
+			function startMove(){
+				//清除上一个动画定时器
+				clearInterval(timer);
+				timer=setInterval(function(){
+					if(dom.offsetLeft == target){
+						clearInterval(timer);
+					}else{
+						dom.style.left=dom.offsetLeft+10+'px';
+					}
+				},20);
+			}
+			startMove();
+        </script>
+    </body>
+</html>

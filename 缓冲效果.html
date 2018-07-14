@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>基本运动</title>
+		<style>
+			div{
+				width:50px;
+				height:50px;
+				position: fixed;
+				left:10px;
+				top:50px;
+				background: red;
+			}
+		</style>
+    </head>
+    <body>
+		<button id="btn">start</button>
+		<div id="demo"></div>
+        <script>
+            var timer=null;
+			var target=600;
+			var dom=document.getElementById('demo');
+			var speed;
+
+			function startMove(){
+				//清除上一个动画定时器
+				clearInterval(timer);
+				timer=setInterval(function(){
+					//计算速度
+					speed = Math.ceil((target-dom.offsetLeft)/8);
+					if(dom.offsetLeft == target){
+						clearInterval(timer);
+					}else{
+						dom.style.left=dom.offsetLeft+speed+'px';
+					}
+				},20);
+			}
+			document.getElementById('btn').onclick=function(){
+				startMove();
+			};
+        </script>
+    </body>
+</html>
